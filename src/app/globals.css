@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #52525b;
+}
+
+.dark {
+  --background: #18181b;
+  --foreground: #fafafa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #18181b;
+    --foreground: #fafafa;
+  }
+}
+
+@layer components {
+  .button {
+    @apply min-w-24 rounded-md px-4 py-2 font-medium text-gray-600 border-2 border-gray-600 shadow-sm;
+  }
+  .button:hover {
+    @apply opacity-80;
+  }
+  .button:disabled {
+    @apply opacity-65;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--foreground);
+  background: var(--background);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+h1 {
+  @apply py-2 text-3xl  font-bold;
+}
+
+h2 {
+  @apply py-2 text-3xl  font-bold;
+}
+
+h3 {
+  @apply py-2 text-2xl  font-bold;
+}
+
+h4 {
+  @apply py-2 text-xl font-bold;
+}
+
+h5 {
+  @apply text-lg font-bold;
+}
+
+h6 {
+  @apply text-sm font-bold;
+}
+
+p {
+  @apply overflow-hidden truncate whitespace-normal p-1 align-middle font-medium;
+}
+
+label {
+  @apply my-2 block font-bold;
+}
+
+input {
+  @apply w-full appearance-none rounded border px-3 py-2 leading-tight text-zinc-600  shadow focus:outline-none dark:disabled:bg-zinc-200;
+}
+
+textarea {
+  @apply min-h-20 w-full appearance-none rounded border px-3 py-2 leading-tight text-zinc-600 shadow focus:outline-none dark:disabled:bg-zinc-200;
+}
+
+select {
+  @apply block w-full rounded-lg border border-zinc-300 bg-zinc-50 p-2.5 text-base text-zinc-600 focus:border-sky-500 focus:ring-sky-500 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white dark:placeholder-zinc-400 dark:focus:border-sky-500 dark:focus:ring-sky-500;
+}
+
+table {
+  @apply w-full text-center rtl:text-right;
+}
+
+thead {
+  @apply bg-zinc-200 uppercase text-zinc-600 dark:bg-zinc-700 dark:text-zinc-400;
+}
+
+th {
+  @apply px-6 py-3;
+}
+
+td {
+  @apply whitespace-nowrap px-4 py-2 font-medium dark:hover:text-zinc-600;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #c8c8c8;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s infinite ease-in-out;
+}
