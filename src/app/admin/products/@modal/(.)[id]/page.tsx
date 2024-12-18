@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import ViewProductForm from "@/app/admin/products/components/forms/ViewProductForm";
+import ViewProductForm from "@/app/admin/products/components/ViewProduct";
 import ViewProductSkeleton from "../../components/ViewProductSkeleton";
 const Product = async ({ params }: { params: Promise<any> }) => {
   const { id } = await params;

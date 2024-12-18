@@ -1,12 +1,12 @@
 import { PaginationType, Product } from "@/types/types";
 import Link from "next/link";
-import { DeleteIcon, EditIcon } from "@/components/icons/Icons";
+import { DeleteIcon, EditIcon, SearchIcon } from "@/components/icons/Icons";
 import Pagination from "@/components/common/Pagination";
-import { getProducts, getProductsCount } from "@/services/api/productApi";
+import { getProducts, getProductsCount } from "@/services/api/productsApi";
 import Toast from "@/components/Toast";
 
 const ProductsTable: React.FC<{ search: string; pagination: PaginationType }> = async ({ search, pagination }) => {
-  const tableHeaders = ["Product Name", "Product Description", "Product Barcode", "Regular Price", "Action"];
+  const tableHeaders = ["Naziv proizvoda", "Opis", "Barcode", "Cena", "Akcija"];
 
   let { products, errorMessage: productErrorMessage }: { products: Product[]; errorMessage: string | null } =
     await getProducts({ search, pagination });
@@ -29,17 +29,20 @@ const ProductsTable: React.FC<{ search: string; pagination: PaginationType }> = 
         <tbody>
           {products.map((product, index) => (
             <tr key={index}>
-              <td className="max-w-64 overflow-hidden text-ellipsis text-left" key={`productName${index}`}>
-                <Link href={`/admin/products/${product?.productId}`}>{product?.productName}</Link>
+              <td className="overflow-hidden text-ellipsis text-left" key={`productName${index}`}>
+                {product?.productName}
               </td>
-              <td className="max-w-64 overflow-hidden text-ellipsis text-left" key={`productDescription_${index}`}>
+              <td className="overflow-hidden text-ellipsis text-left" key={`productDescription_${index}`}>
                 {product?.productDesc}
               </td>
               <td key={`productBarcode_${index}`}>{product?.productBarcode}</td>
               <td key={`regularPrice_${index}`}>
                 {product?.productPrice.toLocaleString("sr-RS", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </td>
-              <td className="flex justify-center gap-8" key={`action_${index}`}>
+              <td className="flex justify-end gap-4" key={`action_${index}`}>
+                <Link href={`/admin/products/${product?.productId}`}>
+                  <SearchIcon size={40} />
+                </Link>
                 <Link href={`/admin/products/${product?.productId}/delete`}>
                   <DeleteIcon size={40} />
                 </Link>

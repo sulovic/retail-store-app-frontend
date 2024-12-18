@@ -1,11 +1,17 @@
 export type AuthUser = {
-  userId?: number;
+  userId: number;
   firstName: string;
   lastName: string;
   email: string;
-  iat?: number;
-  exp?: number;
-  roles: { roleId: number; roleName: string };
+  UserRoles: {
+    roleId: number;
+    roleName: string;
+  };
+  Stores: {
+    storeId: number;
+    storeName: string;
+    storeAddress: string;
+  }[];
 };
 
 

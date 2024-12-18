@@ -18,9 +18,6 @@ export default async function AdminDashboardLayout({ children }: { children: Rea
   return (
     <div>
       <Navbar links={navbarLinks} authUser={authUser} />
-      <header className="mx-2 md:mx-4">
-        <h1>Admin Dashboard</h1>
-      </header>
       <main className="mx-2 md:mx-4">{children}</main>
     </div>
   );

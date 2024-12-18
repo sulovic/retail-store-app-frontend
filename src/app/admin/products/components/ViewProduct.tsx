@@ -1,17 +1,16 @@
 import { Product } from "@/types/types";
 import Link from "next/link";
 import Image from "next/image";
-import placeholder from "../../../../../../public/placeholder.png";
-import { getProductById } from "@/services/api/productApi";
+import placeholder from "../../../../../public/placeholder.png";
+import { getProductById } from "@/services/api/productsApi";
 import Toast from "@/components/Toast";
 
-const ViewProductForm: React.FC<{ id: string }> = async ({ id }) => {
-
-  const { product, errorMessage } : { product: Product; errorMessage: string | null } = await getProductById(id);
-
+const ViewProduct: React.FC<{ id: string }> = async ({ id }) => {
+  const { product, errorMessage }: { product: Product; errorMessage: string | null } = await getProductById(id);
 
   return (
-      <div className="m-4 p-4 transform w-full max-w-3xl overflow-hidden border-zinc-200 border-2 rounded-lg bg-white dark:bg-gray-800 text-left shadow-xl transition-all sm:p-8">
+    <div className="flex flex-col gap-4">
+      <div className="p-4 transform w-full max-w-3xl overflow-hidden border-zinc-200 border-2 rounded-lg bg-white dark:bg-gray-800 text-left shadow-xl transition-all sm:p-8">
         <div className="w-full sm:mt-0 text-left">
           {/* Modal Head */}
           <h4 className="p-0">Pregled proizvoda</h4>
@@ -54,13 +53,14 @@ const ViewProductForm: React.FC<{ id: string }> = async ({ id }) => {
 
         {/* Modal Buttons */}
         <div className="gap-2 flex flex-row-reverse">
-          <Link href="/admin/products" className="button button-gray">
+          <Link href="/admin/products" className="button button-tertiary">
             Odustani
           </Link>
         </div>
         {errorMessage && <Toast errorMessage={errorMessage} />}
       </div>
+    </div>
   );
 };
 
-export default ViewProductForm;
+export default ViewProduct;

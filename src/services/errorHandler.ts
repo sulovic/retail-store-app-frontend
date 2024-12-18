@@ -5,7 +5,7 @@ export const handleApiError = (error: any) => {
   console.log("Error in API call:",error?.message)
 
   if (error.response?.status === 400) {
-    errorMessage = "Nisu poslati podaci za upis.";
+    errorMessage = "Greška u zahtevu. Nisu poslati svi podaci ili su podaci neispravni.";
   } else if (error.response?.status === 401) {
     errorMessage = "Niste autorizovani da posetite ovu stranu.";
   } else if (error.response?.status === 403) {

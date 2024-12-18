@@ -6,7 +6,7 @@ import "./globals.css";
 
 const roboto = Roboto({
   display: "swap",
-  weight: ["400", "500", "700"],
+  weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
 });
 
@@ -20,8 +20,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  
   return (
     <html lang="en">
       <head>
