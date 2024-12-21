@@ -68,8 +68,8 @@ const UserMenu: React.FC<{ links: NavbarLinks[]; authUser: AuthUser }> = ({ link
 
             {links.map(
               (link, index) =>
-                authUser?.roles?.roleId &&
-                link?.minRole < authUser?.roles?.roleId && (
+                authUser?.UserRoles?.roleId &&
+                link?.minRole < authUser?.UserRoles?.roleId && (
                   <React.Fragment key={`fragment-${index}`}>
                     <li className={`block px-4 py-2 font-medium no-underline ${currentLocation === link?.href ? `text-zinc-500` : `text-zinc-600`} text-zinc-600 hover:bg-zinc-100 lg:hidden dark:text-zinc-100 dark:hover:bg-zinc-600 dark:hover:text-white`} key={`userMenu-${index}`} onClick={toggleMenuHidden}>
                       <Link href={link?.href}>{link?.label}</Link>

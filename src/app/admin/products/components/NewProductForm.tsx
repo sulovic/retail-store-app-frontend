@@ -1,7 +1,7 @@
 import Form from "next/form"; // Make sure this is the correct import for the Form component
 import React from "react";
 import Link from "next/link";
-import SubmitFormButton from "@/components/buttons/SubmitFormButton";
+import SubmitFormButton from "@/components/buttons/SubmitActionButton";
 import { postProduct } from "@/services/api/productsApi";
 import { Product } from "@/types/types";
 import { revalidatePath } from "next/cache";

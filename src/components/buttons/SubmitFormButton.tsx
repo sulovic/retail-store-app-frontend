@@ -1,13 +1,15 @@
 "use client";
 import { useFormStatus } from "react-dom";
 
-export default function SubmitFormButton({
-  buttonText,
-  option = "primary",
-}: {
+type SubmitActionButtonProps = {
   buttonText: string;
   option?: "primary" | "secondary" | "tertiary" | "danger";
-}) {
+}
+
+export default function SubmitActionButton({
+  buttonText,
+  option = "primary",
+}: SubmitActionButtonProps) {
   const { pending } = useFormStatus();
 
   return (

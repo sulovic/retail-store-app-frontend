@@ -3,39 +3,15 @@ import Image from "next/image";
 import placeholder from "../../../../../public/placeholder.png";
 import { getProductById } from "@/services/api/productsApi";
 import Toast from "@/components/Toast";
-import { deleteProduct } from "@/services/api/productsApi";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-import Form from "next/form";
 import Link from "next/link";
-import SubmitFormButton from "@/components/buttons/SubmitFormButton";
-import { join } from "path";
-
-async function deleteProductAction(formData: FormData) {
-  "use server";
-
-  const id = formData.get("productId")?.toString() || "";
-  const productName = formData.get("productName")?.toString() || "";
-
-  const { product: addedProduct, errorMessage } = await deleteProduct(id);
-  revalidatePath("/admin/products");
-  if (errorMessage) {
-    const errorRedirectUrl = `/admin/products?error=${encodeURIComponent(`Proizvod ${productName}: ${errorMessage}`)}`;
-    redirect(errorRedirectUrl);
-  }
-  const redirectUrl = `/admin/products?success=${encodeURIComponent(
-    `Proizvod ${addedProduct.productName} je uspešno izbrisan!`
-  )}`;
-  redirect(redirectUrl);
-}
+import SubmitActionButton from "@/components/buttons/SubmitActionButton";
+import { deleteProductAction } from "@/services/serverActions/productActions";
 
 const DeleteProduct: React.FC<{ id: string }> = async ({ id }) => {
-
-  await new Promise((test) => setTimeout(test, 3000));
   const { product, errorMessage }: { product: Product; errorMessage: string | null } = await getProductById(id);
 
   return (
-    <Form action={deleteProductAction} className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4">
       <div className="p-4 transform w-full max-w-3xl overflow-hidden border-zinc-200 border-2 rounded-lg bg-white dark:bg-gray-800 text-left shadow-xl transition-all sm:p-8">
         <div className="w-full sm:mt-0 text-left">
           {/* Modal Head */}
@@ -82,14 +58,17 @@ const DeleteProduct: React.FC<{ id: string }> = async ({ id }) => {
           <Link href="/admin/products" className="button button-tertiary">
             Odustani
           </Link>
-          <SubmitFormButton option="danger" buttonText="Obriši proizvod" />
+          <SubmitActionButton
+            buttonText="Obrisi proizvod"
+            option="danger"
+            action={deleteProductAction}
+            actionProps={product}
+          />
         </div>
-        <input type="hidden" name="productId" value={product.productId} />
-        <input type="hidden" name="productName" value={product.productName} />
 
         {errorMessage && <Toast errorMessage={errorMessage} />}
       </div>
-    </Form>
+    </div>
   );
 };
 

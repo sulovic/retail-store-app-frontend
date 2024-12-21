@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import ViewUser from "@/app/admin/users/components/ViewUser";
+import DeleteUser from "@/app/admin/users/components/DeleteUser";
 import ViewUserSkeleton from "@/app/admin/users/components/ViewUserSkeleton";
 
 const Product = async ({ params }: { params: Promise<any> }) => {
@@ -8,7 +8,7 @@ const Product = async ({ params }: { params: Promise<any> }) => {
   return (
     <div className="flex justify-center">
       <Suspense fallback={<ViewUserSkeleton />}>
-        <ViewUser id={id} />
+        <DeleteUser id={id} />
       </Suspense>
     </div>
   );

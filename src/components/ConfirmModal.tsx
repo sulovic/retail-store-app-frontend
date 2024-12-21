@@ -1,8 +1,13 @@
-"use client";
+import React from "react";
 
-import type { ModalProps } from "@/types/types";
+type ModalProps = {
+  onOK: () => Promise<void>;
+  onCancel: () => void;
+  title: string;
+  question: string;
+};
 
-const Modal: React.FC<ModalProps> = ({ onOK, onCancel, title, question }) => {
+const ConfirmModal: React.FC<ModalProps> = ({ onOK, onCancel, title, question }) => {
   return (
     <div className="absolute inset-0 z-50">
       <div className="absolute inset-0 bg-zinc-500 bg-opacity-75 transition-opacity">
@@ -35,4 +40,4 @@ const Modal: React.FC<ModalProps> = ({ onOK, onCancel, title, question }) => {
   );
 };
 
-export default Modal;
+export default ConfirmModal;
