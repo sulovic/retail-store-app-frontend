@@ -14,7 +14,6 @@ export type AuthUser = {
   }[];
 };
 
-
 export type LoginData = {
   type: "password" | "google";
   email?: string;
@@ -54,29 +53,28 @@ export type NavbarLinks = {
   }[];
 };
 
-export type ModalProps = {
-  onOK: () => void;
-  onCancel: () => void;
-  title: string;
-  question: string;
-};
-
-export  type Product = {
+export type Product = {
   productId: number;
   productBarcode: string;
   productName: string;
   productPrice: number;
   productDesc: string | null;
   productImage: string | null;
-}
+};
 
 export type PaginationType = {
   page: number;
   limit: number;
   count: number;
-}
+};
 
-export type FilterType= {
+export type FilterType = {
   productName?: string;
   productBarcode?: string;
-  };
+};
+
+export type Store = {
+  storeId: number;
+  storeName: string;
+  storeAddress: string;
+}

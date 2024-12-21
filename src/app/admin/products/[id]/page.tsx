@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import ViewProduct from "@/app/admin/products/components/ViewProduct";
 import ViewProductSkeleton from "@/app/admin/products/components/ViewProductSkeleton";
 
-const Product = async ({ params }: { params: Promise<any> }) => {
+export default async function ProductPage ({ params }: { params: Promise<any> }) {
   const { id } = await params;
 
   return (
@@ -13,5 +13,3 @@ const Product = async ({ params }: { params: Promise<any> }) => {
     </div>
   );
 };
-
-export default Product;

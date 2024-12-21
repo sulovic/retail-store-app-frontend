@@ -3,12 +3,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import Modal from "@/components/modals/Modal";
+import Modal from "@/components/Modal";
 import { NavbarLinks } from "@/types/types";
 import { AuthUser } from "@/types/types";
 import { handleLogout } from "@/services/handleAuth";
 import { toast } from "react-toastify";
-import { UserIcon } from "../icons/Icons";
+import { UserIcon } from "@/components/Icons";
 
 const UserMenu: React.FC<{ links: NavbarLinks[]; authUser: AuthUser }> = ({ links = [], authUser }) => {
   const [showLogoutModal, setShowLogoutModal] = useState<boolean>(false);

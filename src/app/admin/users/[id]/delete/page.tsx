@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import DeleteUser from "@/app/admin/users/components/DeleteUser";
 import ViewUserSkeleton from "@/app/admin/users/components/ViewUserSkeleton";
 
-const Product = async ({ params }: { params: Promise<any> }) => {
+export default async function DeleteUserPage({ params }: { params: Promise<any> }) {
   const { id } = await params;
 
   return (
@@ -12,6 +12,4 @@ const Product = async ({ params }: { params: Promise<any> }) => {
       </Suspense>
     </div>
   );
-};
-
-export default Product;
+}

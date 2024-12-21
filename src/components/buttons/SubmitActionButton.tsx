@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Modal from "../modals/Modal";
+import Modal from "../Modal";
 
 type SubmitActionButtonProps = {
   buttonText: string;
@@ -29,6 +29,7 @@ export default function SubmitActionButton({
     <>
       <button
         onClick={() => setShowModal(true)}
+        disabled={executing}
         className={`button ${
           option === "danger"
             ? "button-danger"
@@ -45,7 +46,7 @@ export default function SubmitActionButton({
         <Modal
           onOK={() => executeAction()}
           onCancel={() => setShowModal(false)}
-          title={"UPOZORENJE"}
+          title={"UPOZORENJE!"}
           question={"Da li ste sigurni da zelite da izvršite ovu akciju?"}
         />
       )}

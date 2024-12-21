@@ -1,7 +1,6 @@
-const Dashboard = () => {
+export default function Dashboard () {
   return (
     <p>Dashboard content</p>
   )
 }
 
-export default Dashboard

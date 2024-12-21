@@ -1,7 +1,7 @@
 import { FilterType, PaginationType, Product } from "@/types/types";
-import createAxiosInstance from "../createAxiosInstance";
-import generateApiParams from "./generateApiParams";
-import { handleApiError } from "../errorHandler";
+import createAxiosInstance from "@/services/createAxiosInstance";
+import generateApiParams from "@/services/api/generateApiParams";
+import { handleApiError } from "@/services/errorHandler";
 
 export const getProducts = async ({
   filters,

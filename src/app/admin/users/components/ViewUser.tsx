@@ -20,24 +20,24 @@ const ViewUser: React.FC<{ id: string }> = async ({ id }) => {
           <div className="grid grid-cols-2 gap-2 md:gap-4">
             <div>
               <div>
-                <label htmlFor="productName">Ime i prezime</label>
+                <label>Ime i prezime</label>
                 <p>
                   {user.firstName} {user.lastName}
                 </p>
               </div>
               <div>
-                <label htmlFor="productDesc">Email</label>
+                <label>Email</label>
                 <p> {user.email}</p>
               </div>
               <div>
-                <label htmlFor="productBarcode">Ovlašćenja</label>
-                <p>{user.UserRoles.roleName}</p>
+                <label >Ovlašćenja</label>
+                <p>{user && user.UserRoles?.roleName}</p>
               </div>
             </div>
             <div>
-              <label htmlFor="productBarcode">Prodavnice</label>
+              <label>Prodavnice</label>
 
-              {user.Stores.map((store, index) => (
+              {user && user.Stores && user.Stores.map((store, index) => (
                 <p key={index}>{store.storeName}</p>
               ))}
             </div>
@@ -48,7 +48,7 @@ const ViewUser: React.FC<{ id: string }> = async ({ id }) => {
 
         {/* Modal Buttons */}
         <div className="gap-2 flex flex-row-reverse">
-          <Link href="/admin/users" className="button button-gray">
+          <Link href="/admin/users" className="button button-tertiary">
             Odustani
           </Link>
         </div>

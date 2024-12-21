@@ -22,20 +22,20 @@ const ViewProduct: React.FC<{ id: string }> = async ({ id }) => {
           <div className="grid grid-cols-2 gap-2 md:gap-4">
             <div>
               <div>
-                <label htmlFor="productName">Naziv proizvoda</label>
+                <label>Naziv proizvoda</label>
                 <p>{product.productName}</p>
               </div>
               <div>
-                <label htmlFor="productDesc">Opis</label>
+                <label>Opis</label>
                 <p> {product.productDesc}</p>
               </div>
               <div className="grid  grid-cols-2">
                 <div>
-                  <label htmlFor="productBarcode">Barcode</label>
+                  <label>Barcode</label>
                   <p>{product.productBarcode}</p>
                 </div>
                 <div>
-                  <label htmlFor="productPrice">Cena</label>
+                  <label>Cena</label>
                   <p>{product.productPrice}</p>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 import { FilterType, PaginationType, AuthUser } from "@/types/types";
-import createAxiosInstance from "../createAxiosInstance";
-import generateApiParams from "./generateApiParams";
-import { handleApiError } from "../errorHandler";
+import createAxiosInstance from "@/services/createAxiosInstance";
+import generateApiParams from "@/services/api/generateApiParams";
+import { handleApiError } from "@/services/errorHandler";
 
 export const getUsers = async ({
   filters,
@@ -45,6 +45,10 @@ export const getUserById = async (id: string): Promise<{ user: AuthUser; errorMe
   try {
     const axiosInstance = await createAxiosInstance();
     const response: { data: AuthUser } = await axiosInstance.get(`/api/users/${id}`);
+    console.log(response.data);
+    if (!response.data) {
+      return { user: {} as AuthUser, errorMessage: "Korisnik nije pronađen!" };
+    }
     return { user: response.data, errorMessage: null };
   } catch (error) {
     return { user: {} as AuthUser, errorMessage: handleApiError(error) };

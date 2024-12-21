@@ -2,7 +2,7 @@
 
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-import { SearchIcon } from "../icons/Icons";
+import { SearchIcon } from "../Icons";
 
 
 const Search = ({ placeholder }: { placeholder: string }) => {

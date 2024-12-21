@@ -4,22 +4,19 @@ import Search from "@/components/common/Search";
 import TableSkeleton from "@/components/TableSkeleton";
 import { PaginationType } from "@/types/types";
 import Toast from "@/components/Toast";
-import { CreateIcon } from "@/components/icons/Icons";
+import { CreateIcon } from "@/components/Icons";
 import Link from "next/link";
 
 export default async function Users({ searchParams }: { searchParams: Promise<any> }) {
   const params = await searchParams;
-
-  const search = params?.search || "";
-  const errorMessage = params?.error;
-  const successMessage = params?.success;
+  const { error, success, search = "", page = 1, limit = 20 } = params;
   const pagination: PaginationType = {
-    page: Number(params?.page) || 1,
-    limit: Number(params?.limit) || 20,
+    page: Number(page),
+    limit: Number(limit),
     count: 1,
   };
+  console.log(search);
   const skeletonTableHeaders = ["Ime i prezime", "Email/Username", "Ovlašćenja", "Prodavnice", "Akcija"];
-
 
   return (
     <>
@@ -37,8 +34,8 @@ export default async function Users({ searchParams }: { searchParams: Promise<an
         </Suspense>
       </div>
 
-      {errorMessage && <Toast errorMessage={errorMessage} />}
-      {successMessage && <Toast successMessage={successMessage} />}
+      {error && <Toast errorMessage={error} />}
+      {success && <Toast successMessage={success} />}
     </>
   );
 }

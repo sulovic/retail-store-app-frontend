@@ -1,6 +1,6 @@
 import { PaginationType, Product } from "@/types/types";
 import Link from "next/link";
-import { DeleteIcon, EditIcon, SearchIcon } from "@/components/icons/Icons";
+import { DeleteIcon, EditIcon, SearchIcon } from "@/components/Icons";
 import Pagination from "@/components/common/Pagination";
 import { getProducts, getProductsCount } from "@/services/api/productsApi";
 import Toast from "@/components/Toast";

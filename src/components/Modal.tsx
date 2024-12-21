@@ -1,13 +1,13 @@
-import React from "react";
+"use client";
 
 type ModalProps = {
-  onOK: () => Promise<void>;
+  onOK: () => void;
   onCancel: () => void;
   title: string;
   question: string;
 };
 
-const ConfirmModal: React.FC<ModalProps> = ({ onOK, onCancel, title, question }) => {
+const Modal: React.FC<ModalProps> = ({ onOK, onCancel, title, question }) => {
   return (
     <div className="absolute inset-0 z-50">
       <div className="absolute inset-0 bg-zinc-500 bg-opacity-75 transition-opacity">
@@ -25,10 +25,10 @@ const ConfirmModal: React.FC<ModalProps> = ({ onOK, onCancel, title, question })
                 </div>
               </div>
               <div className="flex flex-row-reverse gap-2">
-                <button type="button" className="button button-sky" onClick={onOK}>
+                <button type="button" className="button button-primary" onClick={onOK}>
                   OK
                 </button>
-                <button type="button" className="button button-zinc" onClick={onCancel}>
+                <button type="button" className="button button-tertiary" onClick={onCancel}>
                   Odustani
                 </button>
               </div>
@@ -40,4 +40,4 @@ const ConfirmModal: React.FC<ModalProps> = ({ onOK, onCancel, title, question })
   );
 };
 
-export default ConfirmModal;
+export default Modal;

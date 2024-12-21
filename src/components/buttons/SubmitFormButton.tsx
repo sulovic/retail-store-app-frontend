@@ -15,6 +15,7 @@ export default function SubmitActionButton({
   return (
     <button
       type="submit"
+      disabled={pending}
       className={`button ${
         option === "danger"
           ? "button-danger"
